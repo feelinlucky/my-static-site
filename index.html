@@ -3,58 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Learning Journey</title>
+    <title>Design Explorer</title>
+    <!-- Importing Google Fonts from the Figma Spec -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- STICKY NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Method<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#" class="btn btn-secondary">Sign In</a>
-        </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="hero-container">
-            <span class="badge">Introducing Method Canon</span>
-            <h1>Design and build websites with absolute precision.</h1>
-            <p class="hero-subtitle">A modern static page template engineered to mimic high-fidelity Figma prototypes with seamless responsiveness and clean layouts.</p>
-            <div class="hero-actions">
-                <a href="#" class="btn btn-primary">Get Started Free</a>
-                <a href="#" class="btn btn-text">Learn more &rarr;</a>
-            </div>
-        </div>
-    </header>
+    <!-- Main App Frame (navigator) -->
+    <div class="navigator">
+        
+        <!-- Sidebar container -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <!-- Title Frame -->
+                <div class="title-frame">
+                    <h1>DESIGN EXPLORER</h1>
+                </div>
 
-    <!-- GRID FEATURES SECTION -->
-    <section id="features" class="features">
-        <div class="section-container">
-            <h2>Everything you need to scale</h2>
-            <div class="grid-layout">
-                <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Built with vanilla HTML and CSS so your website loads instantly without framework bloat.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎨</div>
-                    <h3>Figma Perfect</h3>
-                    <p>Styled using precise auto-layout behaviors translated into responsive CSS Flexbox and Grid.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🤖</div>
-                    <h3>Auto Deployed</h3>
-                    <p>Linked directly to your GitHub repository with immediate GitHub Actions pipeline building.</p>
-                </div>
+                <!-- Menu Frame -->
+                <nav class="menu-top">
+                    <!-- Menu Single 1 -->
+                    <div class="menu-single">
+                        <div class="menu-title">
+                            <span>CATEGORY ONE</span>
+                        </div>
+                        
+                        <!-- Hidden Vertical List Dropdown -->
+                        <div class="animation-frame">
+                            <ul class="submenu-list">
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM ONE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM TWO</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM THREE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM FOUR</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM FIVE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM SIX</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Menu Single 2 -->
+                    <div class="menu-single">
+                        <div class="menu-title">
+                            <span>CATEGORY TWO</span>
+                        </div>
+                        <!-- Hidden Vertical List Dropdown -->
+                        <div class="animation-frame">
+                            <ul class="submenu-list">
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM ONE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM TWO</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM THREE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM FOUR</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM FIVE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM SIX</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Menu Single 3 -->
+                    <div class="menu-single">
+                        <div class="menu-title">
+                            <span>CATEGORY THREE</span>
+                        </div>
+                        <!-- Hidden Vertical List Dropdown -->
+                        <div class="animation-frame">
+                            <ul class="submenu-list">
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM ONE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM TWO</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM THREE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM FOUR</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM FIVE</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                                <li class="submenu-item">
+                                    <span class="item-text">ITEM SIX</span>
+                                    <div class="item-underline"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-        </div>
-    </section>
+        </aside>
+
+        <!-- Main Viewer Content (BG-Highlight applied here) -->
+        <main class="viewer">
+            <div class="viewer-content">
+                <h2>Welcome to the Explorer</h2>
+                <p>Select a category from the sidebar to view content.</p>
+            </div>
+        </main>
+
+    </div>
+
 </body>
 </html>

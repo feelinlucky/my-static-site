@@ -1,250 +1,196 @@
 /* ==========================================================================
-   RESET & GLOBAL VARIABLES
+   RESET & VARIABLES
    ========================================================================== */
-:root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --text-main: #111827;
-    --text-muted: #4b5563;
-    --accent: #4f46e5; /* Modern Indigo */
-    --accent-hover: #4338ca;
-    --border-color: #e5e7eb;
-    --radius-lg: 16px;
-    --radius-md: 8px;
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --bg-main: #6D9DC4; /* Blue background from Figma main frame */
+    --bg-viewer: #E9E9E9; /* Gray highlight from BG-Highlight vector */
+    --text-color: #000000;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-main);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    /* Lock the body to the viewport height so it acts like a desktop app */
+    height: 100vh;
+    overflow: hidden; 
 }
 
 /* ==========================================================================
-   COMPONENTS (Buttons, Badges)
+   APP LAYOUT (Figma: name="navigator" flex="row" p={36} gap={10})
    ========================================================================== */
-.btn {
-    display: inline-flex;
+.navigator {
+    display: flex;
+    flex-direction: row;
+    padding: 36px;
+    gap: 10px;
+    height: 100vh; /* Takes full height of the screen */
+    width: 100%;
+}
+
+/* ==========================================================================
+   SIDEBAR (Figma: name="sidebar" w={363})
+   ========================================================================== */
+.sidebar {
+    width: 363px;
+    flex-shrink: 0; /* Prevents the sidebar from getting squished */
+    display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: var(--transition);
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Title (Figma: font="Bebas Neue" size={64} pb={24}) */
+.title-frame {
+    padding-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.title-frame h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 77px;
+    letter-spacing: 1.28px;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   MENU ITEMS (Figma: name="menu-single" gap={18})
+   ========================================================================== */
+.menu-top {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.menu-single {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 18px; /* Adds breathing room between items */
     cursor: pointer;
 }
 
-.btn-primary {
-    background-color: var(--text-main);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #374151;
-    transform: translateY(-1px);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-}
-
-.btn-secondary:hover {
-    background-color: var(--bg-secondary);
-}
-
-.btn-text {
-    color: var(--accent);
-    font-weight: 600;
-}
-
-.btn-text:hover {
-    color: var(--accent-hover);
-    padding-left: 4px;
-}
-
-.badge {
-    display: inline-block;
-    background-color: #eeebff;
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-}
-
-/* ==========================================================================
-   STICKY NAVBAR
-   ========================================================================== */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 16px 24px;
+/* Menu Text (Figma: font="Open Sans" size={32} w={244}) */
+.menu-title {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text-main);
-    text-decoration: none;
-}
-
-.logo span {
-    color: var(--accent);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 32px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--text-main);
-}
-
-/* ==========================================================================
-   HERO SECTION
-   ========================================================================== */
-.hero {
-    padding: 100px 24px 80px 24px;
-    text-align: center;
-    background: radial-gradient(circle at top, #f5f3ff 0%, #ffffff 60%);
-}
-
-.hero-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin-bottom: 24px;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-}
-
-.hero-actions {
-    display: flex;
+    flex-direction: row;
     justify-content: center;
-    gap: 16px;
     align-items: center;
+    width: 244px;
+    padding: 5px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-title span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    line-height: 44px;
+    letter-spacing: 0.64px;
+    font-weight: 600;
+}
+
+/* Added a hover effect to make it feel interactive */
+.menu-single:hover .menu-title {
+    transform: translateX(10px);
+    opacity: 0.7;
 }
 
 /* ==========================================================================
-   FEATURES (Grid Section)
+   VERTICAL SUBMENU LIST & ACCORDION ANIMATION
    ========================================================================== */
-.features {
-    padding: 80px 24px;
-    background-color: var(--bg-secondary);
+.animation-frame {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
-.section-container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Increases expanded height to fit vertical list items */
+.menu-single:hover .animation-frame {
+    max-height: 400px;
+    opacity: 1;
 }
 
-.features h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 48px;
-    letter-spacing: -0.02em;
+/* Vertical List Container */
+.submenu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    width: 100%;
 }
 
-.grid-layout {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+/* Individual List Item */
+.submenu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
 }
 
-.card {
-    background-color: var(--bg-primary);
-    padding: 32px;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
+/* Submenu Typography */
+.item-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0.4px;
+    color: var(--text-color);
+    transition: opacity 0.2s ease;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+/* Hover Indicator */
+.item-underline {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.card-icon {
+.submenu-item:hover .item-text {
+    opacity: 0.6;
+}
+
+.submenu-item:hover .item-underline {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   MAIN VIEWER (Figma: name="viewer" grow={1} bg="#E9E9E9")
+   ========================================================================== */
+.viewer {
+    flex-grow: 1; /* This acts like grow={1} in Figma, taking remaining space */
+    background-color: var(--bg-viewer);
+    border-radius: 12px; /* Added slight rounding to look like a modern panel */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Some basic styling for the inside of the viewer */
+.viewer-content {
+    padding: 48px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.viewer-content h2 {
     font-size: 2rem;
     margin-bottom: 16px;
-}
-
-.card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 12px;
-}
-
-.card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-/* ==========================================================================
-   RESPONSIVENESS (Mobile Tweaks)
-   ========================================================================== */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Simplifies mobile without building complex JS hamburger */
-    }
-
-    .hero h1 {
-        font-size: 2.25rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-
-    .grid-layout {
-        grid-template-columns: 1fr; /* Stack features in a vertical row */
-        gap: 20px;
-    }
 }
