@@ -24,13 +24,39 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Determine Base URL
+        id: base-url
+        run: |
+          repo_name="${{ github.repository }}"
+          repo_name="${repo_name##*/}"
+          # If repo is named {username}.github.io, use / as base, otherwise use /repo-name/
+          if [[ "$repo_name" == *.github.io ]]; then
+            echo "base=/" >> $GITHUB_OUTPUT
+          else
+            echo "base=/$repo_name/" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build Project
+        run: npm run build
+        env:
+          VITE_BASE_URL: ${{ steps.base-url.outputs.base }}
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Uploads the entire root directory (HTML + CSS)
+          path: './dist' # Uploads only the built dist folder
 
       - name: Deploy to GitHub Pages
         id: deployment
